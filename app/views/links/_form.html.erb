@@ -1,7 +1,9 @@
 <%= form_for(@link) do |f| %>
   <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+    <div id="error_explanation" class="alert-message block-message error">
+      <p><strong>Shit! Can't save this.</strong></p>
+
+			<p><%= pluralize(@link.errors.count, "error") %> stopped this from being created.</p>
 
       <ul>
       <% @link.errors.full_messages.each do |msg| %>
@@ -11,14 +13,14 @@
     </div>
   <% end %>
 
-  <div class="clearfix">
+  <div class="clearfix <%= @link.errors[:url].present? ? 'error' : nil %>">
     <%= f.label :url, "URL" %>
 		<div class="input">
     	<%= f.text_field :url, :class => "span7" %>
 			<span class="help-inline">Including http(s)://</span>
 		</div>
   </div>
-  <div class="clearfix">
+  <div class="clearfix <%= @link.errors[:subdomain].present? ? 'error' : nil %>">
     <%= f.label :subdomain %>
 		<div class="input">
     	<%= f.text_field :subdomain %>

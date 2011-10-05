@@ -4,6 +4,7 @@
   <tr>
     <th>Subdomain</th>
     <th>URL</th>
+		<th>Visits</th>
     <th>Actions</th>
   </tr>
 
@@ -11,6 +12,7 @@
   <tr>
 	  <td><%= link.subdomain %><span class="sublabel">.hadric.us</span></td>
     <td><a href="<%= link.url %>"><%= link.url %></a></td>
+		<td><%= link.visits %>
     <td>
 			<%= link_to 'Edit', edit_link_path(link), :class => "label" %>
 			<a href="#" data-controls-modal="modal-<%= link.id %>" data-keyboard="true" class="label important">Destroy</a>

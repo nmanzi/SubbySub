@@ -18,6 +18,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'validate_url', '0.2.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'

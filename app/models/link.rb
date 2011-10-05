@@ -1,4 +1,12 @@
 class Link < ActiveRecord::Base
-  validates :subdomain, :exclusion => { :in => %w(www us ca jp), :message => "%{value} is reserved." }, :uniqueness => true
+  validates :subdomain, 
+            :exclusion => { :in => %w(www us ca jp), :message => "%{value} is reserved." }, 
+            :uniqueness => true, 
+            :presence => true
   validates :url, :presence => true
+  after_initialize :set_defaults
+  
+  def set_defaults
+    self.visits ||= 0
+  end
 end
