@@ -13,11 +13,9 @@ class LinksController < ApplicationController
   # GET /links/1
   # GET /links/1.json
   def show
-    @link = Link.find(params[:id])
+    link = Link.find(params[:id])
 
-    respond_to do |format|
-      format.json { render json: @link }
-    end
+    redirect_to link.url
   end
 
   # GET /links/new
