@@ -13,7 +13,7 @@ class LinksController < ApplicationController
   # GET /links/1
   # GET /links/1.json
   def show
-    link = Link.find(params[:id])
+    link = Link.find_by_subdomain!(request.subdomain)
 
     redirect_to link.url
   end
