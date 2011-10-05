@@ -1,0 +1,32 @@
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% @link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="clearfix">
+    <%= f.label :url, "URL" %>
+		<div class="input">
+    	<%= f.text_field :url, :class => "span7" %>
+			<span class="help-inline">Including http(s)://</span>
+		</div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :subdomain %>
+		<div class="input">
+    	<%= f.text_field :subdomain %>
+			<span class="help-inline">Just the subdomain name, without hadric.us</span>
+		</div>
+  </div>
+  <div class="actions">
+    <input type="submit" class="btn primary" value="Submit">
+		<%= link_to 'Cancel', links_path, :class => "btn danger" %>
+  </div>
+<% end %>

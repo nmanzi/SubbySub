@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="topbar">
+	<div class="fill">
+		<div class="container">
+			<a class="brand" href="#">Subbysub</a>
+		</div>
+	</div>
+</div>
 
-<%= yield %>
+<div class="container" style="padding-top: 60px">
+	<% if flash[:notice] %><div class="alert-message success fade in" data-alert="data-alert"><a class="close" href="#">x</a><%= flash[:notice] %></div>
+	<% end %>
+
+	<% if flash[:error] %><div class="alert-message error fade in" data-alert="data-alert"><a class="close" href="#">x</a><%= flash[:error] %></div>
+	<% end %>
+	
+	<%= yield %>
+</div>
 
 </body>
 </html>
