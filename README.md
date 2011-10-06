@@ -15,6 +15,7 @@ Installation
 2. Set up a wildcard subdomain DNS entry to point to your server (so that all subdomains resolve to the one address)
 	* e.g. *.hadric.us
 3. rake db:migrate
+4. Edit config/config.yaml and specify user and password (Does nothing yet, but will soon)
 
 Thanks
 ------
