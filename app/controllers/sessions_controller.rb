@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_logon
   def new
     if is_authed?
       redirect_to root_url, :flash => {:info => "Already logged in, you fool."}
