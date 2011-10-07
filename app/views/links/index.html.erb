@@ -4,36 +4,42 @@
   <tr>
     <th>Subdomain</th>
     <th>URL</th>
-		<th>Visits</th>
-    <th>Actions</th>
+		<% if is_authed? %>
+			<th>Visits</th>
+	    <th>Actions</th>
+		<% end %>
   </tr>
 
 <% @links.each do |link| %>
   <tr>
 	  <td><%= link.subdomain %><span class="sublabel">.hadric.us</span></td>
     <td><a href="<%= link.url %>"><%= link.url %></a></td>
-		<td><%= link.visits %>
-    <td>
-			<%= link_to 'Edit', edit_link_path(link), :class => "label" %>
-			<a href="#" data-controls-modal="modal-<%= link.id %>" data-keyboard="true" class="label important">Destroy</a>
-			<div id="modal-<%= link.id %>" class="modal hide fade">
-				<div class="modal-header">
-          <a href="#" class="close">&times;</a>
-          <h3>Are you sure?</h3>
-        </div>
-        <div class="modal-body">
-          <p>Really destroy subdomain <strong><%= link.subdomain %>.hadric.us</strong>?</p>
-        </div>
-        <div class="modal-footer">
-          <%= link_to 'Destroy', link, method: :delete, :class => "btn danger" %>
-          <a href="#" class="btn secondary" data-controls-modal="modal-<%= link.id %>">Cancel</a>
-        </div>
-			</div>
-		</td>
+		<% if is_authed? %>
+			<td><%= link.visits %></td>
+	    <td>
+				<%= link_to 'Edit', edit_link_path(link), :class => "label" %>
+				<a href="#" data-controls-modal="modal-<%= link.id %>" data-keyboard="true" class="label important">Destroy</a>
+				<div id="modal-<%= link.id %>" class="modal hide fade">
+					<div class="modal-header">
+	          <a href="#" class="close">&times;</a>
+	          <h3>Are you sure?</h3>
+	        </div>
+	        <div class="modal-body">
+	          <p>Really destroy subdomain <strong><%= link.subdomain %>.hadric.us</strong>?</p>
+	        </div>
+	        <div class="modal-footer">
+	          <%= link_to 'Destroy', link, method: :delete, :class => "btn danger" %>
+	          <a href="#" class="btn secondary" data-controls-modal="modal-<%= link.id %>">Cancel</a>
+	        </div>
+				</div>
+			</td>
+		<% end %>
   </tr>
 <% end %>
 </table>
 
-<div style="text-align: right;">
+<% if is_authed? %>
+	<div style="text-align: right;">
 	<%= link_to 'New Link', new_link_path, :class => "btn primary" %>
-</div>
+	</div>
+<% end %>
