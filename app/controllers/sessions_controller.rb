@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   private
   
   def authenticate(username, password)
-    if username == "admin" && password == "admin"
+    if username == APP_CONFIG['username'] && password == APP_CONFIG['password']
       return true
     end
   end
