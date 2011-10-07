@@ -20,8 +20,17 @@ Installation
 Config.yml
 ----------
 
-		username: <username>
-		password: <password>
+		development:
+			username: <username>
+			password: <password>
+			
+		test:
+			username: <username>
+			password: <password>
+			
+		production:
+			username: <username>
+			password: <password>
 
 Thanks
 ------
