@@ -1,0 +1,22 @@
+<div class="page-header"><h1>Login <small>or die.</small></h1></div>
+
+<%= form_tag sessions_path do %>
+  <div class="clearfix">
+    <%= label_tag :username, "Username" %>
+		<div class="input">
+    	<%= text_field_tag :username, params[:username], :class => "span7" %>
+		</div>
+  </div>
+
+  <div class="clearfix">
+    <%= label_tag :password, "Password" %>
+		<div class="input">
+    	<%= text_field_tag :password %>
+		</div>
+  </div>
+
+  <div class="actions">
+    <input type="submit" class="btn primary" value="Login">
+		<%= link_to 'Cancel', root_url, :class => "btn danger" %>
+  </div>
+<% end -%>
