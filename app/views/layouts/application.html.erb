@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Subbysub</title>
+  <title>SubbySub</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,18 +10,19 @@
 <div class="topbar">
 	<div class="fill">
 		<div class="container">
-			<a class="brand" href="#">Subbysub</a>
+			<a class="brand" href="#">SubbySub</a>
 		</div>
 	</div>
 </div>
 
 <div class="container" style="padding-top: 60px">
-	<% if flash[:notice] %><div class="alert-message success fade in" data-alert="data-alert"><a class="close" href="#">x</a><%= flash[:notice] %></div>
+	<% flash.each do |name, msg| %>  
+		<%= content_tag :div, :id => "flash#{name}", :class => "alert-message fade in #{name}", 'data-alert' => 'data-alert' do %>
+			<a class="close" href="#">x</a>
+			<%= msg %>
+		<% end %>
 	<% end %>
 
-	<% if flash[:error] %><div class="alert-message error fade in" data-alert="data-alert"><a class="close" href="#">x</a><%= flash[:error] %></div>
-	<% end %>
-	
 	<%= yield %>
 </div>
 
