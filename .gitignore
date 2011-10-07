@@ -4,4 +4,4 @@ log/*.log
 tmp/
 .sass-cache/
 public/assets/
-config/config.yaml
+config/config.yml
