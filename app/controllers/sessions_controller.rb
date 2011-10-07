@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if session[:authenticated]
+    if is_authed?
       redirect_to root_url, :flash => {:info => "Already logged in, you fool."}
     end
   end
