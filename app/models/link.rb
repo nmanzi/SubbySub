@@ -4,9 +4,10 @@ class Link < ActiveRecord::Base
             :uniqueness => true, 
             :presence => true
   validates :url, :presence => true, :url => true
-  after_initialize :set_defaults
+  before_save :set_defaults
   
   def set_defaults
     self.visits ||= 0
   end
+
 end
