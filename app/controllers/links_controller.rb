@@ -15,7 +15,8 @@ class LinksController < ApplicationController
   # GET /links/1.json
   def show
     link = Link.find_by_subdomain!(request.subdomain)
-
+    link.visits += 1
+    link.save
     redirect_to link.url
   end
 
