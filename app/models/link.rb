@@ -5,6 +5,7 @@ class Link < ActiveRecord::Base
             :presence => true
   validates :url, :presence => true, :url => true
   before_save :set_defaults
+  after_initialize :set_suggested_subdomain
   
   def self.total_visits
     total_visits = 0
@@ -12,6 +13,15 @@ class Link < ActiveRecord::Base
       total_visits += item.visits
     end
     return total_visits
+  end
+  
+  def self.generate_subdomain
+    token = SecureRandom.hex(3) 
+    token unless find_by_subdomain(token)
+  end
+  
+  def set_suggested_subdomain
+    self.subdomain ||= Link.generate_subdomain
   end
   
   def set_defaults
