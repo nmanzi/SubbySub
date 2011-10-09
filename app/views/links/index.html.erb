@@ -12,7 +12,7 @@
 
 <% @links.each do |link| %>
   <tr>
-	  <td><%= link.subdomain %><span class="sublabel">.hadric.us</span></td>
+	  <td><%= link.subdomain %><span class="sublabel">.<%= APP_CONFIG['parent_domain'] %></span></td>
     <td><a href="<%= link.url %>"><%= link.url %></a></td>
 		<% if is_authed? %>
 			<td><%= link.visits %></td>
@@ -25,7 +25,7 @@
 	          <h3>Are you sure?</h3>
 	        </div>
 	        <div class="modal-body">
-	          <p>Really destroy subdomain <strong><%= link.subdomain %>.hadric.us</strong>?</p>
+	          <p>Really destroy subdomain <strong><%= "#{link.subdomain}.#{APP_CONFIG['parent_domain']}" %></strong>?</p>
 	        </div>
 	        <div class="modal-footer">
 	          <%= link_to 'Destroy', link, method: :delete, :class => "btn danger" %>

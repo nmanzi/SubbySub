@@ -15,7 +15,7 @@
 		<div class="input">
 			<%= hidden_field_tag "default_subdomain", @default_subdomain %>
     	<%= f.text_field :subdomain, :placeholder => @default_subdomain, :value => (@link.subdomain unless @link.subdomain == @default_subdomain) %>
-			<span class="help-inline">Enter without the parent domain, e.g. subbysub NOT subbysub.hadric.us</span>
+			<span class="help-inline">Enter without the parent domain, e.g. subbysub NOT subbysub.<%= APP_CONFIG['parent_domain'] %></span>
 			<% @link.errors[:subdomain].each do |msg| %>
 				<span class="help-block"><%= msg.capitalize %>!</span>
 			<% end %>

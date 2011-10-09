@@ -21,14 +21,17 @@ Config.yml
 ----------
 
 		development:
+			parent_domain: <parent domain>
 			username: <username>
 			password: <password>
 			
 		test:
+			parent_domain: <parent domain>
 			username: <username>
 			password: <password>
 			
 		production:
+			parent_domain: <parent domain>
 			username: <username>
 			password: <password>
 
