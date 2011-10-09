@@ -1,0 +1,14 @@
+<a href="#" data-controls-modal="modal-<%= link.id %>" data-keyboard="true" class="label important">Destroy</a>
+<div id="modal-<%= link.id %>" class="modal hide fade">
+	<div class="modal-header">
+    <a href="#" class="close">&times;</a>
+    <h3>Are you sure?</h3>
+  </div>
+  <div class="modal-body">
+    <p>Really destroy subdomain <strong><%= "#{link.subdomain}.#{APP_CONFIG['parent_domain']}" %></strong>?</p>
+  </div>
+  <div class="modal-footer">
+    <%= link_to 'Destroy', link, method: :delete, :class => "btn danger" %>
+    <a href="#" class="btn secondary" data-controls-modal="modal-<%= link.id %>">Cancel</a>
+  </div>
+</div>
