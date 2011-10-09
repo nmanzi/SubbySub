@@ -45,7 +45,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to links_url, notice: 'Link was successfully created.' }
+        format.html { redirect_to links_url, :flash => { :success => 'Subdomain created!' } }
         format.json { render json: @link, status: :created, location: @link }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.update_attributes(params[:link])
-        format.html { redirect_to links_url, notice: 'Link was successfully updated.' }
+        format.html { redirect_to links_url, :flash => { :success => 'Subdomain updated!' } }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -77,10 +77,7 @@ class LinksController < ApplicationController
     @link.destroy
     
     respond_to do |format|
-      format.html { 
-        flash[:notice] = "Subdomain Destroyed!"
-        redirect_to links_url
-      }
+      format.html { redirect_to links_url, :flash => { :success => "Subdomain Destroyed!" } }
       format.json { head :ok }
     end
   end
