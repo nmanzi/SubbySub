@@ -1,6 +1,6 @@
 <% if @link.errors.any? %>
 	<div class="alert-message error fade in" data-alert="data-alert">
-		<a class="close" href="#">x</a>
+		<a class="close" href="#">&times;</a>
     <p><strong>Shit! Can't save this.</strong> <i><%= pluralize(@link.errors.count, "error") %> stopped this from being created.</i></p>
   </div>
 <% end %>
