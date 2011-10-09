@@ -24,6 +24,7 @@ class LinksController < ApplicationController
   # GET /links/new.json
   def new
     @link = Link.new
+    @default_subdomain = @link.subdomain
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +41,7 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(params[:link])
+    @link.subdomain = params[:default_subdomain] if @link.subdomain.empty?
 
     respond_to do |format|
       if @link.save
